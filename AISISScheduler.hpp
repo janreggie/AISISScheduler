@@ -15,6 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 // include guard
 #ifndef AISIS
 #define AISIS
@@ -29,7 +30,7 @@ namespace AISISScheduler
 {
   class Course
   {
-  private:
+  public:
     std::string subjectCode;
     std::string section;
     std::string courseTitle;
@@ -39,15 +40,14 @@ namespace AISISScheduler
     std::string lang;
     friend std::ostream & operator<<
       (std::ostream & output, const AISISScheduler::Course & C);
-  public:
     Course();
   };
   std::list <std::string> requiredSubjects;
   std::list <AISISScheduler::Course> theList;
   std::list <AISISScheduler::Course> resultList;
-  void extractUserInput();
-  void main();
-  bool scheduleTable[7][28];
+  void extractUserInput();  // get from user input to requiredSubjects
+  void main();  // do shit here
+  bool scheduleTable[6][28];  // 0 if free; 1 if taken
 }
 
 #endif // AISIS

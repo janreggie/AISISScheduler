@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Everything in /bin/ and /obj/
+bin/
+obj/
