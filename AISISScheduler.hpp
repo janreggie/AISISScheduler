@@ -16,6 +16,51 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+Descriptions of AISISScheduler namespace
+
+Objects:
+
+source.json (extern)
+  - In the same folder of AISISScheduler.hpp, there should be a file
+  named source.json. This shall comprise of a list of courses
+  available from AISIS. The repository shall provide a sample
+  source.json for reference.
+class Course
+  - comprises of a course, a section, and other details regarding it.
+  Data comprising ::Course shall be taken from a JSON. More about it
+  later.
+std::list <std::string> requiredSubjects
+std::list <AISISScheduler::Course> theList
+std::list <AISISScheduler::Course> resultList
+bool scheduleTable
+  - This is a schedule table: 6x28. 6 because there are 6 (working) days
+  in a week (0 being Mon, 5 being Sat), and 28 because there are 28 possible
+  30-minute slots (from 07:00 to 21:00). Each cell can either be 0 or 1: 0 if
+  that time slot has not been taken by any subject, and 1 if it already has
+  been. This shall be memset'd every time the program shall create a new
+  viable schedule. More on that later.
+
+Functions:
+
+void extractUserInput()
+  - the user shall input a list of courses they are required to take.
+  The user shall be asked to put the name of the course, and hit Enter
+  after each time they type something. Once the user is done, they may
+  type Enter without placing anything. The list of courses shall be
+  pushed onto ::requiredSubjects.
+void pushToTheList()
+  - Once ::requiredSubjects is filled up, this function shall be used
+  to read from source.json, check ::requiredSubjects, create the
+  necessary ::Course's and push them onto ::theList. The source.json
+  may take up a chunk of space, but, once the function exits, the
+  JSON shall be freed up from memory.
+bool isCompatible(AISISScheduler::Course subj)
+  - This shall determine whether subj is compatible with ::scheduleTable
+  by checking subj.weekDays and subj.timeSlot, creating a temporary time
+  table akin to ::scheduleTale, and checking whether there are any conflicts.
+*/
+
 // include guard
 #ifndef AISIS
 #define AISIS
@@ -45,7 +90,9 @@ namespace AISISScheduler
   std::list <std::string> requiredSubjects;
   std::list <AISISScheduler::Course> theList;
   std::list <AISISScheduler::Course> resultList;
-  void extractUserInput();  // get from user input to requiredSubjects
+  void pushToTheList();
+  void extractUserInput();  // get from userinput to requiredSubjects
+  bool isCompatible(AISISScheduler::Course subject);
   void main();  // do shit here
   bool scheduleTable[6][28];  // 0 if free; 1 if taken
 }
