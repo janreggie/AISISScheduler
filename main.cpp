@@ -3,5 +3,5 @@
 
 int main()
 {
-  AISISScheduler::main();
+  AISISScheduler::start();
 }
