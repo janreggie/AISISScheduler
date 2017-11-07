@@ -1,0 +1,31 @@
+{
+  "Classes": [
+    {
+      "subjectCode": "EN 10",
+      "section": "E01",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "1000"],
+      "instructor": "PAEZ, DEVI BENEDICTE I.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E24",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1400", "1600"],
+      "instructor": "PAEZ, DEVI BENEDICTE I.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.1",
+      "section": "A",
+      "courseTitle": "LASLASAN SA HARAP NG F308",
+      "weekDays": ["Tue", "Thu"],
+      "timeSlot": ["0930", "1100"],
+      "instructor": "MARCOS, BONGBONG R.",
+      "lang": "FIL"
+    }
+  ]
+}

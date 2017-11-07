@@ -62,13 +62,15 @@ bool isCompatible(AISISScheduler::Course subj)
 */
 
 // include guard
-#ifndef AISIS
-#define AISIS
+#ifndef AISIS_HPP
+#define AISIS_HPP 1
 
 // dependencies
 #include <list>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "json.hpp"
 
 namespace AISISScheduler
@@ -83,18 +85,16 @@ namespace AISISScheduler
     std::list <std::string> timeSlot;
     std::string instructor;
     std::string lang;
-    friend std::ostream & operator<<
-      (std::ostream & output, const AISISScheduler::Course & C);
-    Course();
+    void inputFromJSON(nlohmann::json source);
   };
-  std::list <std::string> requiredSubjects;
-  std::list <AISISScheduler::Course> theList;
-  std::list <AISISScheduler::Course> resultList;
+  static std::list <std::string> requiredSubjects;
+  static std::list <AISISScheduler::Course> theList;
+  static std::list <AISISScheduler::Course> resultList;
   void pushToTheList();
   void extractUserInput();  // get from userinput to requiredSubjects
   bool isCompatible(AISISScheduler::Course subject);
-  void main();  // do shit here
-  bool scheduleTable[6][28];  // 0 if free; 1 if taken
+  void start();  // do shit here
+  static bool scheduleTable[6][28];  // 0 if free; 1 if taken
 }
 
-#endif // AISIS
+#endif // AISIS_HPP
