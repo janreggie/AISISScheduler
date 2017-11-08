@@ -44,12 +44,33 @@ void AISISScheduler::extractUserInput()
   do
   {
     std::getline(std::cin,CAT);
+    
     if (CAT != "")
     {
+      bool isThereDupe = false;
+      for (auto & x : AISISScheduler::requiredSubjects)
+      {
+        
+        if (x == CAT)
+        {
+          std::cout << "Duplicate Input. Please try agian.\n";
+          isThereDupe = true;
+        }
+      }
+      if (isThereDupe)
+      {
+        continue;
+      }
       AISISScheduler::requiredSubjects.push_back(CAT);
     }
   }
   while (CAT != "");
+  std::cout << "START HERE:\n";
+  for (auto & x : AISISScheduler::requiredSubjects)
+  {
+    std::cout << " " << x << std::endl;
+  }
+  std::cout << "END BITCH";
 }
 
 void AISISScheduler::start()
