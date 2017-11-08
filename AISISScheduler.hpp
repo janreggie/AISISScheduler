@@ -88,7 +88,7 @@ namespace AISISScheduler
     void inputFromJSON(nlohmann::json source);
   };
   static std::list <std::string> requiredSubjects;
-  static std::list <AISISScheduler::Course> theList;
+  static std::list <std::list <AISISScheduler::Course> > theList;
   static std::list <AISISScheduler::Course> resultList;
   void pushToTheList();
   void extractUserInput();  // get from userinput to requiredSubjects

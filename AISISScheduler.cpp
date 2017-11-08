@@ -13,25 +13,22 @@ void AISISScheduler::pushToTheList()
   // to make shit easier
   allCourses = allCourses.at("Classes");
 
-  // for each element in the JSON, check whether subjectCode is
-  // inside theList
-  for (int i = 0; i < allCourses.size(); ++i)
+  // for each element in requiredSubjects, check whether it
+  // is equal to allCourses.at("subjectCode")
+  for (auto &x : AISISScheduler::requiredSubjects)
   {
-    std::string currentSubj = allCourses.at(i).at("subjectCode");
-    for (auto & x : AISISScheduler::requiredSubjects)
+    AISISScheduler::theList.push_back({});
+    auto theLastElement = --AISISScheduler::theList.end();  // the last element
+    for (int j = 0; j < allCourses.size(); ++j)
     {
-      if (currentSubj == x)
+      if (x == allCourses.at(j).at("subjectCode"))
       {
-        // that is, if currentSubj is in requiredSubjects
-        // create a class of allCourses.at(i)
         AISISScheduler::Course currentClass;
-        currentClass.inputFromJSON(allCourses.at(i));
-        AISISScheduler::theList.push_back(currentClass);
-        break;
+        currentClass.inputFromJSON(allCourses.at(j));
+        theLastElement->push_back(currentClass);
       }
     }
   }
-  std::cout << AISISScheduler::theList.begin()->subjectCode;
 
   // the JSON object need not be deleted since, outside the
   // function, it becomes out of scope.
