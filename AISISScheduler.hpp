@@ -95,6 +95,8 @@ namespace AISISScheduler
   bool isCompatible(AISISScheduler::Course subject);
   void start();  // do shit here
   static bool scheduleTable[6][28];  // 0 if free; 1 if taken
+  std::ostream& operator<<(std::ostream & output, const AISISScheduler::Course & C);
+
 }
 
 #endif // AISIS_HPP
