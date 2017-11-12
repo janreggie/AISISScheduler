@@ -6,16 +6,18 @@
       "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
       "weekDays": ["Mon", "Wed", "Fri"],
       "timeSlot": ["0800", "1000"],
+      "room": "B-206",
       "instructor": "PAEZ, DEVI BENEDICTE I.",
       "lang": "ENG"
     },
     {
       "subjectCode": "EN 10",
-      "section": "E24",
+      "section": "E02",
       "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
       "weekDays": ["Mon", "Wed", "Fri"],
-      "timeSlot": ["1400", "1600"],
-      "instructor": "PAEZ, DEVI BENEDICTE I.",
+      "timeSlot": ["0800", "1000"],
+      "room": "B-207",
+      "instructor": "EVANGELISTA, JESSICA LACE G.",
       "lang": "ENG"
     },
     {
@@ -24,8 +26,89 @@
       "courseTitle": "LASLASAN SA HARAP NG F308",
       "weekDays": ["Tue", "Thu"],
       "timeSlot": ["0930", "1100"],
+      "room": "NIGGERHOOD",
       "instructor": "MARCOS, BONGBONG R.",
       "lang": "FIL"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E03",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "1000"],
+      "room": "B-208",
+      "instructor": "PEREZ, MA. SOCORRO Q.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E04",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "1000"],
+      "room": "B-309",
+      "instructor": "BENITEZ, IRENE B.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E05",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "1000"],
+      "room": "B-106",
+      "instructor": "PATERNO, JHOANNA MICHELLE G.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E11",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1000", "1200"],
+      "room": "B-208",
+      "instructor": "FRANQUELLI, JACQUELINE V.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E12",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1000", "1200"],
+      "room": "SOM 302",
+      "instructor": "PAEZ, DEVI BENEDICTE I.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E13",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1000", "1200"],
+      "room": "F-115",
+      "instructor": "PEREZ, FRANCES PAOLA D.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E21",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1400", "1600"],
+      "room": "B-206",
+      "instructor": "THOMAS, MARY C.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 10",
+      "section": "E22",
+      "courseTitle": "INTRODUCTION TO COLLEGE ENGLISH",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1400", "1600"],
+      "room": "CTC 301",
+      "instructor": "FRANQUELLI, JACQUELINE V.",
+      "lang": "ENG"
     }
   ]
 }

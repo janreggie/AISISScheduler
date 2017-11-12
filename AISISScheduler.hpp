@@ -84,6 +84,7 @@ namespace AISISScheduler
     std::string courseTitle;
     std::list <std::string> weekDays;
     std::list <std::string> timeSlot;
+    std::string room;
     std::string instructor;
     std::string lang;
     void inputFromJSON(nlohmann::json source);

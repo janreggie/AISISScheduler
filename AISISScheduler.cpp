@@ -87,19 +87,28 @@ void AISISScheduler::start()
 
 void AISISScheduler::Course::inputFromJSON(nlohmann::json source)
 {
-  this->subjectCode = source.at("subjectCode");
-  this->section = source.at("section");
-  this->courseTitle = source.at("courseTitle");
-  for (int j = 0; j < source.at("weekDays").size(); ++j)
+  try
   {
-    this->weekDays.push_back(source.at("weekDays").at(j));
+    this->subjectCode = source.at("subjectCode");
+    this->section = source.at("section");
+    this->courseTitle = source.at("courseTitle");
+    for (int j = 0; j < source.at("weekDays").size(); ++j)
+    {
+      this->weekDays.push_back(source.at("weekDays").at(j));
+    }
+    for (int j = 0; j < source.at("timeSlot").size(); ++j)
+    {
+      this->timeSlot.push_back(source.at("timeSlot").at(j));
+    }
+    this->room = source.at("room");
+    this->instructor = source.at("instructor");
+    this->lang = source.at("lang");
   }
-  for (int j = 0; j < source.at("timeSlot").size(); ++j)
+  catch (...)  // just in case if source.json is problematic
   {
-    this->timeSlot.push_back(source.at("timeSlot").at(j));
+    std::cout << "SOME EXCEPTION OCCURED AT ACQUIRING JSON DATA.\n";
+    std::cout << "CHECK THE source.json WHETHER SOME VALUE IS NOT PRESENT.\n";
   }
-  this->instructor = source.at("instructor");
-  this->lang = source.at("lang");
 }
 
 bool AISISScheduler::isCompatible(AISISScheduler::Course subject)
@@ -196,6 +205,7 @@ std::ostream& AISISScheduler::operator<<(std::ostream & output, const AISISSched
     output << i << " ";
   }
 	output << std::endl;
+	output << "ROOM: " << C.room << std::endl;
 	output << "INSTRUCTOR: " << C.instructor << std::endl;
 	output << "LANGUAGE: "<< C.lang << std::endl;
 
@@ -207,5 +217,9 @@ void AISISScheduler::backTrack()
   // the function that'll make AISIS great again; for that reason,
   // earlier iterations of the program named this function MAGA()
   std::vector <AISISScheduler::Course> curSched (AISISScheduler::theList.size());
-  // hmmm...
+  // iterate through every element in ::theList
+  for (auto x : AISISScheduler::theList)
+  {
+    // now what?
+  }
 }
