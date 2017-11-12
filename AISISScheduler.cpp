@@ -32,6 +32,15 @@ void AISISScheduler::pushToTheList()
 
   // the JSON object need not be deleted since, outside the
   // function, it becomes out of scope.
+
+  // for debugging purposes
+  for (auto x : AISISScheduler::theList)
+  {
+    for (auto y : x)
+    {
+      std::cout << y << std::endl;
+    }
+  }
 }
 
 void AISISScheduler::extractUserInput()
@@ -65,12 +74,6 @@ void AISISScheduler::extractUserInput()
     }
   }
   while (CAT != "");
-  std::cout << "START HERE:\n";
-  for (auto & x : AISISScheduler::requiredSubjects)
-  {
-    std::cout << " " << x << std::endl;
-  }
-  std::cout << "END BITCH";
 }
 
 void AISISScheduler::start()
@@ -131,34 +134,6 @@ bool AISISScheduler::isCompatible(AISISScheduler::Course subject)
     }
     ++temptime[1];
   }
-/*  Judd's version (works, but not for all weird use cases)
- *  (delete this for later)
- *   int tempx = std::stoi (*i);
- *   ++i;
- *   int tempy = std::stoi (*i);
- *   int tempdiff = tempy - tempx;
- *
- *   if (tempdiff == 100)
- *     temptime.push_back(temptime[0]+1);
- *   if (tempdiff == 130)
- *     temptime.push_back(temptime[0]+1);
- *     temptime.push_back(temptime[0]+2);
- *   if (tempdiff == 200)
- *   {
- *     for(int i = 1; i<4; i++)
- *       temptime.push_back(temptime[0]+i);
- *   }
- *   if (tempdiff == 300)
- *   {
- *     for(int i = 1; i<6; i++)
- *       temptime.push_back(temptime[0]+i);
- *   }
- *   if (tempdiff == 400)
- *   {
- *     for(int i = 1; i<8; i++)
- *       temptime.push_back(temptime[0]+i);
- *   }
- */
 
   //get weekdays detail and store in tempvector
   std::vector<int> tempday;
@@ -190,26 +165,47 @@ bool AISISScheduler::isCompatible(AISISScheduler::Course subject)
         return false;
     }
   }
+
+  // now write to ::scheduleTable
+  for(auto a : tempday)
+  {
+    for(int b = temptime[0]; b <= temptime[1]; ++b)
+    {
+      AISISScheduler::scheduleTable[a][b] = true;
+    }
+  }
+
   return true;
 }
 
 std::ostream& AISISScheduler::operator<<(std::ostream & output, const AISISScheduler::Course & C)
 {
-	std::cout << "SUBJECT CODE: " << C.subjectCode << std::endl;
-	std::cout << "SECTION: " << C.section << std::endl;
-	std::cout << "COURSE TITLE: " << C.courseTitle << std::endl;
-	std::cout << "SCHEDULE: ";
+	output << "SUBJECT CODE: " << C.subjectCode << std::endl;
+	output << "SECTION: " << C.section << std::endl;
+	output << "COURSE TITLE: " << C.courseTitle << std::endl;
+	output << "SCHEDULE: ";
 	//output weekdays
 	std::list<std::string>::iterator i;
 	for(auto i : C.weekDays)
-		std::cout << i << " ";
+  {
+		output << i << " ";
+  }
 	//output timeslot
 	for(auto i : C.timeSlot)
-		std::cout << i << " ";
-	std::cout << std::endl;
-	std::cout << "INSTRUCTOR: " << C.instructor << std::endl;
-	std::cout << "LANGUAGE: "<< C.lang << std::endl << std::endl;
+  {
+    output << i << " ";
+  }
+	output << std::endl;
+	output << "INSTRUCTOR: " << C.instructor << std::endl;
+	output << "LANGUAGE: "<< C.lang << std::endl;
 
 	return output;
 }
 
+void AISISScheduler::backTrack()
+{
+  // the function that'll make AISIS great again; for that reason,
+  // earlier iterations of the program named this function MAGA()
+  std::vector <AISISScheduler::Course> curSched (AISISScheduler::theList.size());
+  // hmmm...
+}

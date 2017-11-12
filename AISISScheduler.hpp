@@ -71,6 +71,7 @@ bool isCompatible(AISISScheduler::Course subj)
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "json.hpp"
 
 namespace AISISScheduler
@@ -89,14 +90,14 @@ namespace AISISScheduler
   };
   static std::list <std::string> requiredSubjects;
   static std::list <std::list <AISISScheduler::Course> > theList;
-  static std::list <AISISScheduler::Course> resultList;
+  //static std::list <AISISScheduler::Course> resultList;
   void pushToTheList();
   void extractUserInput();  // get from userinput to requiredSubjects
   bool isCompatible(AISISScheduler::Course subject);
   void start();  // do shit here
   static bool scheduleTable[6][28];  // 0 if free; 1 if taken
   std::ostream& operator<<(std::ostream & output, const AISISScheduler::Course & C);
-
+  void backTrack();
 }
 
 #endif // AISIS_HPP
