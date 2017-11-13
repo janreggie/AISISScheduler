@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 /*
 Descriptions of AISISScheduler namespace
 
@@ -99,6 +100,8 @@ namespace AISISScheduler
   static bool scheduleTable[6][28];  // 0 if free; 1 if taken
   std::ostream& operator<<(std::ostream & output, const AISISScheduler::Course & C);
   void backTrack();
+  void pushToSched(AISISScheduler::Course subject);
+  void pullFromSched(AISISScheduler::Course subject);
 }
 
 #endif // AISIS_HPP

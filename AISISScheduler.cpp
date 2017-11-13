@@ -34,9 +34,9 @@ void AISISScheduler::pushToTheList()
   // function, it becomes out of scope.
 
   // for debugging purposes
-  for (auto x : AISISScheduler::theList)
+  for (auto & x : AISISScheduler::theList)
   {
-    for (auto y : x)
+    for (auto & y : x)
     {
       std::cout << y << std::endl;
     }
@@ -175,15 +175,6 @@ bool AISISScheduler::isCompatible(AISISScheduler::Course subject)
     }
   }
 
-  // now write to ::scheduleTable
-  for(auto a : tempday)
-  {
-    for(int b = temptime[0]; b <= temptime[1]; ++b)
-    {
-      AISISScheduler::scheduleTable[a][b] = true;
-    }
-  }
-
   return true;
 }
 
@@ -212,14 +203,137 @@ std::ostream& AISISScheduler::operator<<(std::ostream & output, const AISISSched
 	return output;
 }
 
+void AISISScheduler::pushToSched(AISISScheduler::Course subject)
+{
+  //get details of time and save it in a temporary vector
+  std::list<std::string>::iterator i;
+  int temptime [2] = {0, 0};  // used to compare with ::scheduleTable
+  i = subject.timeSlot.begin();
+  std::list<std::string> listOfTimes = {"0700", "0730", "0800", "0830",
+  "0900", "0930", "1000", "1030", "1100", "1130", "1200", "1230", "1300",
+  "1330", "1400", "1430", "1500", "1530", "1600", "1630", "1700", "1730",
+  "1800", "1830", "1900", "1930", "2000", "2030", "2100"};
+  // check starting time, and iterate temptime[0]
+  //if is equal to the initial time
+  // additionally, check the latter time
+  for (auto x : listOfTimes)
+  {
+    if (*i == x)
+    {
+      break;
+    }
+    ++temptime[0];
+  }
+  // note that the latter is gonna be the time the class ENDS
+  ++i; // for the next timeslot
+  for (auto x : listOfTimes)
+  {
+    if (*i == x)
+    {
+      --temptime[1];
+      break;
+    }
+    ++temptime[1];
+  }
+
+  //get weekdays detail and store in tempvector
+  std::vector<int> tempday;
+
+  for(auto j = subject.weekDays.begin(); j != subject.weekDays.end(); ++j)
+  {
+    if (*j == "Mon")
+      tempday.push_back(0);
+    else if (*j == "Tue")
+      tempday.push_back(1);
+    else if (*j == "Wed")
+      tempday.push_back(2);
+    else if (*j == "Thu")
+      tempday.push_back(3);
+    else if (*j == "Fri")
+      tempday.push_back(4);
+    else if (*j == "Sat")
+      tempday.push_back(5);
+  }
+
+  //check for availability of day&timeslot
+  for(auto a : tempday)
+  {
+    for(int b = temptime[0]; b <= temptime[1]; ++b)
+    {
+      AISISScheduler::scheduleTable[a][b] == true;
+    }
+  }
+
+}
+
+void AISISScheduler::pullFromSched(AISISScheduler::Course subject)
+{
+  //get details of time and save it in a temporary vector
+  std::list<std::string>::iterator i;
+  int temptime [2] = {0, 0};  // used to compare with ::scheduleTable
+  i = subject.timeSlot.begin();
+  std::list<std::string> listOfTimes = {"0700", "0730", "0800", "0830",
+  "0900", "0930", "1000", "1030", "1100", "1130", "1200", "1230", "1300",
+  "1330", "1400", "1430", "1500", "1530", "1600", "1630", "1700", "1730",
+  "1800", "1830", "1900", "1930", "2000", "2030", "2100"};
+  // check starting time, and iterate temptime[0]
+  //if is equal to the initial time
+  // additionally, check the latter time
+  for (auto x : listOfTimes)
+  {
+    if (*i == x)
+    {
+      break;
+    }
+    ++temptime[0];
+  }
+  // note that the latter is gonna be the time the class ENDS
+  ++i; // for the next timeslot
+  for (auto x : listOfTimes)
+  {
+    if (*i == x)
+    {
+      --temptime[1];
+      break;
+    }
+    ++temptime[1];
+  }
+
+  //get weekdays detail and store in tempvector
+  std::vector<int> tempday;
+
+  for(auto j = subject.weekDays.begin(); j != subject.weekDays.end(); ++j)
+  {
+    if (*j == "Mon")
+      tempday.push_back(0);
+    else if (*j == "Tue")
+      tempday.push_back(1);
+    else if (*j == "Wed")
+      tempday.push_back(2);
+    else if (*j == "Thu")
+      tempday.push_back(3);
+    else if (*j == "Fri")
+      tempday.push_back(4);
+    else if (*j == "Sat")
+      tempday.push_back(5);
+  }
+
+  //check for availability of day&timeslot
+  for(auto a : tempday)
+  {
+    for(int b = temptime[0]; b <= temptime[1]; ++b)
+    {
+      AISISScheduler::scheduleTable[a][b] == false;
+    }
+  }
+
+}
+
 void AISISScheduler::backTrack()
 {
   // the function that'll make AISIS great again; for that reason,
   // earlier iterations of the program named this function MAGA()
   std::vector <AISISScheduler::Course> curSched (AISISScheduler::theList.size());
-  // iterate through every element in ::theList
-  for (auto x : AISISScheduler::theList)
-  {
-    // now what?
-  }
+  int scheduleCount = 0;  // how many schedules are possible?
+  // now how the fuck do i do this
 }

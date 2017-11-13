@@ -109,6 +109,76 @@
       "room": "CTC 301",
       "instructor": "FRANQUELLI, JACQUELINE V.",
       "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 11",
+      "section": "R01",
+      "courseTitle": "COMMUNICATION IN ENGLISH I",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "0900"],
+      "room": "CTC 302",
+      "instructor": "CRUZ, PRISCILLA ANGELA T.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 11",
+      "section": "R02",
+      "courseTitle": "COMMUNICATION IN ENGLISH I",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "0900"],
+      "room": "CTC 305",
+      "instructor": "CUARTERO, JOSE MARI B.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 11",
+      "section": "R03",
+      "courseTitle": "COMMUNICATION IN ENGLISH I",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "0900"],
+      "room": "CTC 304",
+      "instructor": "BANTUG, MARIANA S.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 11",
+      "section": "R04",
+      "courseTitle": "COMMUNICATION IN ENGLISH I",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "0900"],
+      "room": "K-201",
+      "instructor": "SUAREZ, ELINETH ELIZABETH L.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 11",
+      "section": "R05",
+      "courseTitle": "COMMUNICATION IN ENGLISH I",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "0900"],
+      "room": "B-104",
+      "instructor": "LUMBA, LORA MARIE S.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 11",
+      "section": "R06",
+      "courseTitle": "COMMUNICATION IN ENGLISH I",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["0800", "0900"],
+      "room": "B-306",
+      "instructor": "GUEVARRA, ALONA U.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "EN 11",
+      "section": "R21",
+      "courseTitle": "COMMUNICATION IN ENGLISH I",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1000", "1100"],
+      "room": "CTC 205",
+      "instructor": "ADANTE, IRISH GENEVIEVE L.",
+      "lang": "ENG"
     }
   ]
 }
