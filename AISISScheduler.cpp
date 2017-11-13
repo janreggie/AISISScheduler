@@ -335,5 +335,6 @@ void AISISScheduler::backTrack()
   // earlier iterations of the program named this function MAGA()
   std::vector <AISISScheduler::Course> curSched (AISISScheduler::theList.size());
   int scheduleCount = 0;  // how many schedules are possible?
-  // now how the fuck do i do this
+  auto it = AISISScheduler::theList.cbegin();
+  // fuck
 }

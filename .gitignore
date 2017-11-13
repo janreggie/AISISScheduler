@@ -34,3 +34,16 @@
 # Everything in /bin/ and /obj/
 bin/
 obj/
+
+# doxygen (and other log files)
+**/*.log
+doxygen/doxygen.log
+
+# for .directory files 
+**/.directory
+
+# for backup files
+**/*~
+
+# for tmp files
+**/*.tmp

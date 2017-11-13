@@ -75,33 +75,114 @@ bool isCompatible(AISISScheduler::Course subj)
 #include <vector>
 #include "json.hpp"
 
+/**
+The catch-all namespace for everything in this header file.
+The reason why a namespace is appropriate is to isolate the functions that
+shall be presented from other parts of a (potentially large) program, so
+that name conflicts won't be an issue.
+*/
 namespace AISISScheduler
 {
   class Course
   {
   public:
+    /** The subject code (e.g. "EN 11"). Note the space. */
     std::string subjectCode;
+
+    /** The section of a class, as presented in AISIS. */
     std::string section;
+
+    /** The title of the course, as presented in AISIS. */
     std::string courseTitle;
+
+
+    /** A list of weekdays where class is present (e.g. ["Mon", "Wed"]).
+    \note It is assumed that there are six days:
+    "Mon", "Tue", "Wed", "Thu", "Fri", "Sat". */
     std::list <std::string> weekDays;
+
+    /** The time slot of a subject (time in, to time out) in 24-hour time
+    (e.g. ["0800", "1000"] for a 8-to-10 class).
+    \note It is assumed that classes start not earlier than 0700
+    and not later than 2100. It is also assumed that the classes occur in
+    30-minute intervals (so a time of "0845" or similar is invalid).*/
     std::list <std::string> timeSlot;
+
+    /** The room where the course occurs in, as presented in AISIS. */
     std::string room;
+
+    /** The instructor of a given course, as presented in AISIS. */
     std::string instructor;
+
+    /** The language of a given course, as presented in AISIS. */
     std::string lang;
+
+    /** A function that reads from some JSON file and copies over relevant
+    information to the class object. Check source.json for an example.
+    \note If some parameter is absent, it will stop reading, print out that
+    an exception has occured, and return to fallback values
+    (i.e. empty string)*/
     void inputFromJSON(nlohmann::json source);
+
+    /** Prints out data regarding the current course to some stream (e.g. to stdout) */
+    friend std::ostream& operator<<(std::ostream & output, const AISISScheduler::Course & C);
+
   };
+
+  /** A list of subject codes the user is required to take.
+  Taken from user input (i.e. stdin, extractUserInput()). */
   static std::list <std::string> requiredSubjects;
+
+  /** A list of list of courses. Each element of theList is a list of
+  courses of the same subjectCode. Taken from pushToTheList(). */
   static std::list <std::list <AISISScheduler::Course> > theList;
-  //static std::list <AISISScheduler::Course> resultList;
+
+  /** Reads from source.json, and, for each element in requiredSubjects,
+  it shall append an empty list in theList, and from that empty list, it
+  will append a Course object if one can be found by reading source.json. */
   void pushToTheList();
-  void extractUserInput();  // get from userinput to requiredSubjects
+
+  /** Reads the user input from std::getline, letting them type subject
+  codes, and appending these to requiredSubjects after pressing [Enter].
+  Detects whether duplicate entries are found. If [Enter] is pressed without
+  typing anything in, the function shall stop. */
+  void extractUserInput();
+
+  /** Shall determine whether subject is compatible with scheduleTable.
+  Returns True if it is, False otherwise. */
   bool isCompatible(AISISScheduler::Course subject);
-  void start();  // do shit here
-  static bool scheduleTable[6][28];  // 0 if free; 1 if taken
-  std::ostream& operator<<(std::ostream & output, const AISISScheduler::Course & C);
-  void backTrack();
+
+  /** Shall be the "frontend" of the program, if a programmer shall
+  carry the header file to another program.
+
+  Shall execute the following functions, in that order:
+  extractUserInput(), pushToTheList(), backTrack(). */
+  void start();
+
+  /** A boolean two-dimensional C-like array, which contains whether a certain
+  30-minute time slot (e.g. at Mon from 1400 to 1430) is taken. The first
+  dimension represent the days (0 for Mon, 5 for Sat), and the second
+  representing each 30-minute time slot (i.e. 0700-0730, 0730-0800, ... ,
+  2030-2100). */
+  static bool scheduleTable[6][28];
+
+  /** \note So far, this is just fucking bullshit.
+
+  This function shall be responsible for making AISIS great again. Earlier
+  versions of the program has given the name MAGA for this function.*/
+    void backTrack();
+
+  /** Shall modify scheduleTable so that the appropriate time slots for
+  subject are "taken" (i.e. flipped to 1).
+
+  \note It is assumed that isCompatible() returns True! */
   void pushToSched(AISISScheduler::Course subject);
+
+  /** Shall modify scheduleTable so that the appropriate time slots for
+  subject are "freed up" (i.e. flipped to 0).
+  \note It is assumed that pushToSched() is invoked! */
   void pullFromSched(AISISScheduler::Course subject);
+
 }
 
 #endif // AISIS_HPP
