@@ -133,6 +133,12 @@ namespace AISISScheduler
   Taken from user input (i.e. stdin, extractUserInput()). */
   static std::list <std::string> requiredSubjects;
 
+
+  /** A list of list of courses. Each element of scheduleList
+  is a viable schedule.
+  */
+  static std::list <std::list <AISISScheduler::Course> > scheduleList;
+
   /** A list of list of courses. Each element of theList is a list of
   courses of the same subjectCode. Taken from pushToTheList(). */
   static std::list <std::list <AISISScheduler::Course> > theList;
@@ -170,7 +176,7 @@ namespace AISISScheduler
 
   This function shall be responsible for making AISIS great again. Earlier
   versions of the program has given the name MAGA for this function.*/
-    void backTrack();
+  void backTrack();
 
   /** Shall modify scheduleTable so that the appropriate time slots for
   subject are "taken" (i.e. flipped to 1).
@@ -183,6 +189,16 @@ namespace AISISScheduler
   \note It is assumed that pushToSched() is invoked! */
   void pullFromSched(AISISScheduler::Course subject);
 
+  /** Shall result to a list of permutations.
+  */
+  std::list <std::list <AISISScheduler::Course> > listOfPermutations(std::list <std::list <AISISScheduler::Course> > courseList);
+
+  template <typename T> std::list <T> helper_removeFirstElement (std::list <T> lst)
+  {
+    std::list <T> result = lst;
+    result.pop_front();
+    return result;
+  }
 }
 
 #endif // AISIS_HPP

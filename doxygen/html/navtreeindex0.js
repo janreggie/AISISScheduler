@@ -1,18 +1,7 @@
 var NAVTREEINDEX0 =
 {
-"_a_i_s_i_s_scheduler_8cpp.html":[3,0,0],
+".html":[2,0,2],
 "_a_i_s_i_s_scheduler_8cpp_source.html":[3,0,0],
-"_a_i_s_i_s_scheduler_8hpp.html":[3,0,1],
-"_a_i_s_i_s_scheduler_8hpp.html#a14b5909f19711cc8f7a769a3b6023632":[3,0,1,7],
-"_a_i_s_i_s_scheduler_8hpp.html#a357a4d47f5929854661cc2f468d9ddfe":[3,0,1,8],
-"_a_i_s_i_s_scheduler_8hpp.html#a63201a394a8c2c7371680b2a81cd9cf0":[3,0,1,3],
-"_a_i_s_i_s_scheduler_8hpp.html#a867aabea953b9d390d5a1bf1679f825c":[3,0,1,2],
-"_a_i_s_i_s_scheduler_8hpp.html#adb94bbd68bcc47d3446c88e23ceacdee":[3,0,1,4],
-"_a_i_s_i_s_scheduler_8hpp.html#adf2fdf7dd13e98c914e458a26b3b9904":[3,0,1,9],
-"_a_i_s_i_s_scheduler_8hpp.html#af32f10e757fbe3632cf8bae7d1a7fe57":[3,0,1,5],
-"_a_i_s_i_s_scheduler_8hpp.html#af667e1cdbeb57edab0c96caaa47eb888":[3,0,1,10],
-"_a_i_s_i_s_scheduler_8hpp.html#af775567fd5bf057b14fc4cce664d3117":[3,0,1,6],
-"_a_i_s_i_s_scheduler_8hpp.html#afcecf0c9a9cf0d4da9199de2347d33c7":[3,0,1,1],
 "_a_i_s_i_s_scheduler_8hpp_source.html":[3,0,1],
 "annotated.html":[2,0],
 "class_a_i_s_i_s_scheduler_1_1_course.html":[2,0,0,0],
@@ -249,5 +238,16 @@ var NAVTREEINDEX0 =
 "classnlohmann_1_1detail_1_1input__stream__adapter.html#a5190fe4d0c5ff2e3b348b28ee3bb2218":[2,0,1,0,22,2],
 "classnlohmann_1_1detail_1_1input__stream__adapter.html#ab6a65d3816ce4027ef4d2013a13ee697":[2,0,1,0,22,5],
 "classnlohmann_1_1detail_1_1input__stream__adapter.html#ae0760af923583de6354725e901d1869d":[2,0,1,0,22,3],
-"classnlohmann_1_1detail_1_1input__stream__adapter.html#aeac5048221929b8f7558d1698dd0fb3a":[2,0,1,0,22,4]
+"classnlohmann_1_1detail_1_1input__stream__adapter.html#aeac5048221929b8f7558d1698dd0fb3a":[2,0,1,0,22,4],
+"classnlohmann_1_1detail_1_1input__stream__adapter.html#af487152e4606d013eb4ec6a90eaf82ea":[2,0,1,0,22,1],
+"classnlohmann_1_1detail_1_1invalid__iterator.html":[2,0,1,0,24],
+"classnlohmann_1_1detail_1_1invalid__iterator.html#a4e849260a3caa1b288c7e619130c6c09":[2,0,1,0,24,0],
+"classnlohmann_1_1detail_1_1iter__impl.html":[2,0,1,0,35],
+"classnlohmann_1_1detail_1_1iter__impl.html#a0d14cd76203e00bdcef6a64a5d055cc7":[2,0,1,0,35,20],
+"classnlohmann_1_1detail_1_1iter__impl.html#a0dd9c415b94a02ff2aa25da75e52da30":[2,0,1,0,35,14],
+"classnlohmann_1_1detail_1_1iter__impl.html#a19aa457f9c4af1b7e3af59839132cc5c":[2,0,1,0,35,4],
+"classnlohmann_1_1detail_1_1iter__impl.html#a2b592605b63ae7f5401996ffa3b14393":[2,0,1,0,35,23],
+"classnlohmann_1_1detail_1_1iter__impl.html#a2f7ea9f7022850809c60fc3263775840":[2,0,1,0,35,0],
+"classnlohmann_1_1detail_1_1iter__impl.html#a3a541a223320f6635f2f188ba54f8818":[2,0,1,0,35,7],
+"classnlohmann_1_1detail_1_1iter__impl.html#a3eef94f9d167046e7f773aeb6b78090c":[2,0,1,0,35,13]
 };

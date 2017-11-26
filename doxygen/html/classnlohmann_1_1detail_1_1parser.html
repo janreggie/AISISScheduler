@@ -108,13 +108,15 @@ Public Types</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a37ac88c864dda495f72cb62776b0bebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad250ad4f2b4af4a497e727c963162ff1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlohmann_1_1detail_1_1parser.html#ad250ad4f2b4af4a497e727c963162ff1">parser_callback_t</a> = std::function&lt; bool(int depth, <a class="el" href="classnlohmann_1_1detail_1_1parser.html#a37ac88c864dda495f72cb62776b0bebe">parse_event_t</a> event, BasicJsonType &amp;parsed)&gt;</td></tr>
+<tr class="memitem:ad250ad4f2b4af4a497e727c963162ff1"><td class="memItemLeft" align="right" valign="top"><a id="ad250ad4f2b4af4a497e727c963162ff1"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>parser_callback_t</b> = std::function&lt; bool(int depth, <a class="el" href="classnlohmann_1_1detail_1_1parser.html#a37ac88c864dda495f72cb62776b0bebe">parse_event_t</a> event, BasicJsonType &amp;parsed)&gt;</td></tr>
 <tr class="separator:ad250ad4f2b4af4a497e727c963162ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a693aa2a6c0cc665e0e45bacf055460e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlohmann_1_1detail_1_1parser.html#a693aa2a6c0cc665e0e45bacf055460e6">parser</a> (<a class="el" href="namespacenlohmann_1_1detail.html#ae132f8cd5bb24c5e9b40ad0eafedf1c2">detail::input_adapter_t</a> adapter, const <a class="el" href="classnlohmann_1_1detail_1_1parser.html#ad250ad4f2b4af4a497e727c963162ff1">parser_callback_t</a> cb=nullptr, const bool allow_exceptions_=true)</td></tr>
-<tr class="memdesc:a693aa2a6c0cc665e0e45bacf055460e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">a parser reading from an input adapter  <a href="#a693aa2a6c0cc665e0e45bacf055460e6">More...</a><br /></td></tr>
+<tr class="memitem:a693aa2a6c0cc665e0e45bacf055460e6"><td class="memItemLeft" align="right" valign="top"><a id="a693aa2a6c0cc665e0e45bacf055460e6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlohmann_1_1detail_1_1parser.html#a693aa2a6c0cc665e0e45bacf055460e6">parser</a> (<a class="el" href="namespacenlohmann_1_1detail.html#ae132f8cd5bb24c5e9b40ad0eafedf1c2">detail::input_adapter_t</a> adapter, const parser_callback_t cb=nullptr, const bool allow_exceptions_=true)</td></tr>
+<tr class="memdesc:a693aa2a6c0cc665e0e45bacf055460e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">a parser reading from an input adapter <br /></td></tr>
 <tr class="separator:a693aa2a6c0cc665e0e45bacf055460e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14338d8f3174601c0b2b7ef28752ab17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnlohmann_1_1detail_1_1parser.html#a14338d8f3174601c0b2b7ef28752ab17">parse</a> (const bool strict, BasicJsonType &amp;result)</td></tr>
 <tr class="memdesc:a14338d8f3174601c0b2b7ef28752ab17"><td class="mdescLeft">&#160;</td><td class="mdescRight">public parser interface  <a href="#a14338d8f3174601c0b2b7ef28752ab17">More...</a><br /></td></tr>
@@ -131,26 +133,7 @@ class nlohmann::detail::parser&lt; BasicJsonType &gt;</h3>
 <p>This class implements a recursive decent parser. </p>
 
 <p class="definition">Definition at line <a class="el" href="json_8hpp_source.html#l02904">2904</a> of file <a class="el" href="json_8hpp_source.html">json.hpp</a>.</p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ad250ad4f2b4af4a497e727c963162ff1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad250ad4f2b4af4a497e727c963162ff1">&#9670;&nbsp;</a></span>parser_callback_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename BasicJsonType &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classnlohmann_1_1detail_1_1parser.html">nlohmann::detail::parser</a>&lt; BasicJsonType &gt;::<a class="el" href="classnlohmann_1_1detail_1_1parser.html#ad250ad4f2b4af4a497e727c963162ff1">parser_callback_t</a> =  std::function&lt;bool(int depth, <a class="el" href="classnlohmann_1_1detail_1_1parser.html#a37ac88c864dda495f72cb62776b0bebe">parse_event_t</a> event, BasicJsonType&amp; parsed)&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="json_8hpp_source.html#l02930">2930</a> of file <a class="el" href="json_8hpp_source.html">json.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a37ac88c864dda495f72cb62776b0bebe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37ac88c864dda495f72cb62776b0bebe">&#9670;&nbsp;</a></span>parse_event_t</h2>
 
@@ -188,55 +171,6 @@ template&lt;typename BasicJsonType &gt; </div>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="json_8hpp_source.html#l02913">2913</a> of file <a class="el" href="json_8hpp_source.html">json.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a693aa2a6c0cc665e0e45bacf055460e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a693aa2a6c0cc665e0e45bacf055460e6">&#9670;&nbsp;</a></span>parser()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename BasicJsonType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnlohmann_1_1detail_1_1parser.html">nlohmann::detail::parser</a>&lt; BasicJsonType &gt;::<a class="el" href="classnlohmann_1_1detail_1_1parser.html">parser</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacenlohmann_1_1detail.html#ae132f8cd5bb24c5e9b40ad0eafedf1c2">detail::input_adapter_t</a>&#160;</td>
-          <td class="paramname"><em>adapter</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classnlohmann_1_1detail_1_1parser.html#ad250ad4f2b4af4a497e727c963162ff1">parser_callback_t</a>&#160;</td>
-          <td class="paramname"><em>cb</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool&#160;</td>
-          <td class="paramname"><em>allow_exceptions_</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>a parser reading from an input adapter </p>
-
-<p class="definition">Definition at line <a class="el" href="json_8hpp_source.html#l02933">2933</a> of file <a class="el" href="json_8hpp_source.html">json.hpp</a>.</p>
 
 </div>
 </div>
@@ -346,7 +280,7 @@ template&lt;typename BasicJsonType &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacenlohmann.html">nlohmann</a></li><li class="navelem"><a class="el" href="namespacenlohmann_1_1detail.html">detail</a></li><li class="navelem"><a class="el" href="classnlohmann_1_1detail_1_1parser.html">parser</a></li>
-    <li class="footer">Generated on Mon Nov 13 2017 23:24:38 for AISISScheduler by
+    <li class="footer">Generated on Sun Nov 19 2017 13:45:21 for AISISScheduler by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

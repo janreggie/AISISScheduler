@@ -1,6 +1,7 @@
 var _a_i_s_i_s_scheduler_8hpp =
 [
     [ "Course", "class_a_i_s_i_s_scheduler_1_1_course.html", "class_a_i_s_i_s_scheduler_1_1_course" ],
+    [ "__backTrackHelper", "_a_i_s_i_s_scheduler_8hpp.html#a43ebe26924f3df414ed7e5f4ca87aea3", null ],
     [ "backTrack", "_a_i_s_i_s_scheduler_8hpp.html#afcecf0c9a9cf0d4da9199de2347d33c7", null ],
     [ "extractUserInput", "_a_i_s_i_s_scheduler_8hpp.html#a867aabea953b9d390d5a1bf1679f825c", null ],
     [ "isCompatible", "_a_i_s_i_s_scheduler_8hpp.html#a63201a394a8c2c7371680b2a81cd9cf0", null ],

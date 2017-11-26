@@ -28,19 +28,17 @@ void AISISScheduler::pushToTheList()
         theLastElement->push_back(currentClass);
       }
     }
+    // check whether the last element in theList is EMPTY
+    // backTrack WILL FAIL if that is the case
+    if (AISISScheduler::theList.rbegin()->size() == 0)
+    {
+      AISISScheduler::theList.pop_back();
+    }
   }
 
   // the JSON object need not be deleted since, outside the
   // function, it becomes out of scope.
 
-  // for debugging purposes
-  for (auto & x : AISISScheduler::theList)
-  {
-    for (auto & y : x)
-    {
-      std::cout << y << std::endl;
-    }
-  }
 }
 
 void AISISScheduler::extractUserInput()
@@ -83,6 +81,22 @@ void AISISScheduler::start()
 
   // do list pushing
   AISISScheduler::pushToTheList();
+
+  // and do backtracking
+  AISISScheduler::backTrack();
+
+  // print out all the possible schedules
+  std::cout << "Here are your possible schedules:\n";
+  int i = 1;
+  for (auto & x : AISISScheduler::scheduleList)
+  {
+    printf("Schedule %i\n", i);
+    for (auto & y : x)
+    {
+      std::cout << y << std::endl;
+    }
+    ++i;
+  }
 }
 
 void AISISScheduler::Course::inputFromJSON(nlohmann::json source)
@@ -333,8 +347,50 @@ void AISISScheduler::backTrack()
 {
   // the function that'll make AISIS great again; for that reason,
   // earlier iterations of the program named this function MAGA()
-  std::vector <AISISScheduler::Course> curSched (AISISScheduler::theList.size());
-  int scheduleCount = 0;  // how many schedules are possible?
-  auto it = AISISScheduler::theList.cbegin();
-  // fuck
+  AISISScheduler::scheduleList = AISISScheduler::listOfPermutations(AISISScheduler::theList);
 }
+
+std::list <std::list <AISISScheduler::Course> > AISISScheduler::listOfPermutations(std::list <std::list <AISISScheduler::Course> > courseList)
+{
+  // with a given
+  std::list <std::list <AISISScheduler::Course> > result;
+  if (courseList.size() == 0)
+  {
+    // i.e. if the course list is empty
+    return {{}};  // return a list containing an empty list
+  }
+  else
+  {
+    // now iterate for the *first* element of courseList
+    // asterisk is important (pointer are a fucking bitch)
+    for (auto & crse : *(courseList.begin()))
+    {
+      if (!(AISISScheduler::isCompatible(crse)))
+      {
+        // i.e. if we cannot put crse inside the list
+        continue;  // go on with the for loop
+      }
+      else
+      {
+        // first, push crse into the scheduleTable
+        AISISScheduler::pushToSched(crse);
+        // now, let us iterate for every listOfPermutations (but without the first one!)
+        for (auto & rmn : AISISScheduler::listOfPermutations(AISISScheduler::helper_removeFirstElement(courseList)))
+        {
+          // create a temporary list that'll be of the remaining subjects
+          std::list <AISISScheduler::Course> tempSched;
+          // add the current crse into tempSched
+          tempSched.push_back(crse);
+          // then add the rest of rmn
+          tempSched.insert(tempSched.end(), rmn.begin(), rmn.end());
+          // then add tempSched to the result
+          result.push_back(tempSched);
+        }
+        // and finally, pull it.
+        AISISScheduler::pullFromSched(crse);
+      }
+    }
+  }
+  return result;
+}
+
