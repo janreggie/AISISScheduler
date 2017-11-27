@@ -179,6 +179,96 @@
       "room": "CTC 205",
       "instructor": "ADANTE, IRISH GENEVIEVE L.",
       "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 102.1",
+      "section": "A",
+      "courseTitle": "ELECTRONICS I, LECTURE",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1300", "1400"],
+      "room": "F-308",
+      "instructor": "SELERIO, FATIMA B.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 102.1",
+      "section": "B",
+      "courseTitle": "ELECTRONICS I, LECTURE",
+      "weekDays": ["Mon", "Wed", "Fri"],
+      "timeSlot": ["1200", "1300"],
+      "room": "F-308",
+      "instructor": "SELERIO, FATIMA B.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.1",
+      "section": "A",
+      "courseTitle": "CIRCUITS II, LECTURE",
+      "weekDays": ["Tue", "Thu"],
+      "timeSlot": ["0930", "1100"],
+      "room": "F-308",
+      "instructor": "MONJE, JOSE CLARO N.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.1",
+      "section": "B",
+      "courseTitle": "CIRCUITS II, LECTURE",
+      "weekDays": ["Tue", "Thu"],
+      "timeSlot": ["1100", "1230"],
+      "room": "F-308",
+      "instructor": "MONJE, JOSE CLARO N.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.1",
+      "section": "C",
+      "courseTitle": "CIRCUITS II, LECTURE",
+      "weekDays": ["Tue", "Thu"],
+      "timeSlot": ["1400", "1530"],
+      "room": "F-308",
+      "instructor": "MONJE, JOSE CLARO N.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.2",
+      "section": "A",
+      "courseTitle": "CIRCUITS II, LABORATORY",
+      "weekDays": ["Mon"],
+      "timeSlot": ["0800", "1000"],
+      "room": "F-325",
+      "instructor": "HENSON, DAVID LLOYD G.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.2",
+      "section": "B",
+      "courseTitle": "CIRCUITS II, LABORATORY",
+      "weekDays": ["Mon"],
+      "timeSlot": ["1000", "1200"],
+      "room": "F-325",
+      "instructor": "HENSON, DAVID LLOYD G.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.2",
+      "section": "C",
+      "courseTitle": "CIRCUITS II, LABORATORY",
+      "weekDays": ["Fri"],
+      "timeSlot": ["1100", "1300"],
+      "room": "F-325",
+      "instructor": "HENSON, DAVID LLOYD G.",
+      "lang": "ENG"
+    },
+    {
+      "subjectCode": "ELC 106.2",
+      "section": "D",
+      "courseTitle": "CIRCUITS II, LABORATORY",
+      "weekDays": ["Fri"],
+      "timeSlot": ["1500", "1700"],
+      "room": "F-325",
+      "instructor": "HENSON, DAVID LLOYD G.",
+      "lang": "ENG"
     }
   ]
 }
