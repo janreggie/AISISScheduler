@@ -274,7 +274,7 @@ void AISISScheduler::pushToSched(AISISScheduler::Course subject)
   {
     for(int b = temptime[0]; b <= temptime[1]; ++b)
     {
-      AISISScheduler::scheduleTable[a][b] == true;
+      AISISScheduler::scheduleTable[a][b] = true;
     }
   }
 
@@ -337,7 +337,7 @@ void AISISScheduler::pullFromSched(AISISScheduler::Course subject)
   {
     for(int b = temptime[0]; b <= temptime[1]; ++b)
     {
-      AISISScheduler::scheduleTable[a][b] == false;
+      AISISScheduler::scheduleTable[a][b] = false;
     }
   }
 
