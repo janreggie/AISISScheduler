@@ -2,6 +2,23 @@
 #include "json.hpp"
 // do shit here daisuki de
 
+std::string AISISScheduler::takeInfo(const AISISScheduler::Course& c)
+{
+    std::string sched = "    SCHEDULE: ";
+    for (auto & i : c.weekDays)
+        sched += i + ' ';
+    for (auto & i : c.timeSlot)
+        sched += i + ' ';
+    return \
+        "  SUBJECT CODE: " + c.subjectCode + '\n' + \
+        "    SECTION: " + c.section + '\n' + \
+        "    COURSE TITLE: " + c.courseTitle + '\n' + \
+        sched + '\n' + \
+        "    ROOM: " + c.room + '\n' + \
+        "    INSTRUCTOR: " + c.instructor + '\n' + \
+        "    LANGUAGE: " + c.lang + '\n';
+}
+
 void AISISScheduler::pushToTheList()
 {
   // read from json
@@ -19,7 +36,7 @@ void AISISScheduler::pushToTheList()
   {
     AISISScheduler::theList.push_back({});
     auto theLastElement = --AISISScheduler::theList.end();  // the last element
-    for (int j = 0; j < allCourses.size(); ++j)
+    for (unsigned int j = 0; j < allCourses.size(); ++j)
     {
       if (x == allCourses.at(j).at("subjectCode"))
       {
@@ -93,7 +110,7 @@ void AISISScheduler::start()
     printf("Schedule %i\n", i);
     for (auto & y : x)
     {
-      std::cout << y << std::endl;
+      std::cout << AISISScheduler::takeInfo(y);
     }
     ++i;
   }
@@ -106,11 +123,11 @@ void AISISScheduler::Course::inputFromJSON(nlohmann::json source)
     this->subjectCode = source.at("subjectCode");
     this->section = source.at("section");
     this->courseTitle = source.at("courseTitle");
-    for (int j = 0; j < source.at("weekDays").size(); ++j)
+    for (unsigned int j = 0; j < source.at("weekDays").size(); ++j)
     {
       this->weekDays.push_back(source.at("weekDays").at(j));
     }
-    for (int j = 0; j < source.at("timeSlot").size(); ++j)
+    for (unsigned int j = 0; j < source.at("timeSlot").size(); ++j)
     {
       this->timeSlot.push_back(source.at("timeSlot").at(j));
     }
@@ -191,7 +208,7 @@ bool AISISScheduler::isCompatible(AISISScheduler::Course subject)
 
   return true;
 }
-
+/*
 std::ostream& AISISScheduler::operator<<(std::ostream & output, const AISISScheduler::Course & C)
 {
 	output << "SUBJECT CODE: " << C.subjectCode << std::endl;
@@ -215,7 +232,7 @@ std::ostream& AISISScheduler::operator<<(std::ostream & output, const AISISSched
 	output << "LANGUAGE: "<< C.lang << std::endl;
 
 	return output;
-}
+}*/
 
 void AISISScheduler::pushToSched(AISISScheduler::Course subject)
 {

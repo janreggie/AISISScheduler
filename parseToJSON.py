@@ -70,7 +70,7 @@ def parse(filename):
         toWrite.write("""      "lang": "%s"\n""" % course[8][:-1])
 
         # and close that brace
-        toWrite.write("    }\n")
+        toWrite.write("    },\n")
 
     # Once that's loop's done, do the following:
     toWrite.write("  ]\n}")

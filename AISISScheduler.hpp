@@ -81,194 +81,194 @@ bool isCompatible(AISISScheduler::Course subj)
  */
 namespace AISISScheduler 
 {
-  /**
-   * @class Course
-   * @date 12/01/17
-   * @file AISISScheduler.hpp
-   * @brief Container for a Course object
-   * 
-   * Contains a Course object, whose elements are subject code, section, 
-   * among others.
-   */
-  class Course
-  {
-  public:
-    /** The subject code (e.g. "EN 11"). Note the space. */
-    std::string subjectCode;
+    /**
+    * @class Course
+    * @date 12/01/17
+    * @file AISISScheduler.hpp
+    * @brief Container for a Course object
+    * 
+    * Contains a Course object, whose elements are subject code, section, 
+    * among others.
+    */
+    class Course
+    {
+    public:
+        /** The subject code (e.g. "EN 11"). Note the space. */
+        std::string subjectCode;
 
-    /** The section of a class, as presented in AISIS. */
-    std::string section;
+        /** The section of a class, as presented in AISIS. */
+        std::string section;
 
-    /** The title of the course, as presented in AISIS. */
-    std::string courseTitle;
+        /** The title of the course, as presented in AISIS. */
+        std::string courseTitle;
 
 
-    /** 
-     * A list of weekdays where class is present (e.g. ["Mon", "Wed"]).
-     * \note It is assumed that there are six days:
-     * "Mon", "Tue", "Wed", "Thu", "Fri", "Sat". 
+        /** 
+         * A list of weekdays where class is present (e.g. ["Mon", "Wed"]).
+         * \note It is assumed that there are six days:
+         * "Mon", "Tue", "Wed", "Thu", "Fri", "Sat". 
+         */
+        std::list <std::string> weekDays;
+
+        /** 
+         * The time slot of a subject (time in, to time out) in 24-hour time
+         * (e.g. ["0800", "1000"] for a 8-to-10 class).
+         * 
+         * \note It is assumed that classes start not earlier than 0700
+         * and not later than 2100. It is also assumed that the classes occur in
+         * 30-minute intervals (so a time of "0845" or similar is invalid).*/
+        std::list <std::string> timeSlot;
+
+        /** The room where the course occurs in, as presented in AISIS. */
+        std::string room;
+
+        /** The instructor of a given course, as presented in AISIS. */
+        std::string instructor;
+
+        /** The language of a given course, as presented in AISIS. */
+        std::string lang;
+
+        /** 
+         * A function that reads from some JSON file and copies over relevant
+         * information to the class object. Check source.json for an example.
+         * 
+         * \note If some parameter is absent, it will stop reading, print out that
+         * an exception has occured, and return to fallback values
+         * (i.e. empty string).
+         */
+        void inputFromJSON(nlohmann::json source);
+    };
+    
+    /**
+     * Print me daddy.
+     * I love you.
      */
-    std::list <std::string> weekDays;
+    std::string takeInfo(const AISISScheduler::Course & c);
 
     /** 
-     * The time slot of a subject (time in, to time out) in 24-hour time
-     * (e.g. ["0800", "1000"] for a 8-to-10 class).
-     * 
-     * \note It is assumed that classes start not earlier than 0700
-     * and not later than 2100. It is also assumed that the classes occur in
-     * 30-minute intervals (so a time of "0845" or similar is invalid).*/
-    std::list <std::string> timeSlot;
-
-    /** The room where the course occurs in, as presented in AISIS. */
-    std::string room;
-
-    /** The instructor of a given course, as presented in AISIS. */
-    std::string instructor;
-
-    /** The language of a given course, as presented in AISIS. */
-    std::string lang;
+    * A list of subject codes the user is required to take.
+    * Taken from user input (i.e. stdin, extractUserInput()). 
+    */
+    static std::list <std::string> requiredSubjects;
 
     /** 
-     * A function that reads from some JSON file and copies over relevant
-     * information to the class object. Check source.json for an example.
-     * 
-     * \note If some parameter is absent, it will stop reading, print out that
-     * an exception has occured, and return to fallback values
-     * (i.e. empty string).
-     */
-    void inputFromJSON(nlohmann::json source);
+    * A list of list of courses. Each element of scheduleList
+    * is a viable schedule.
+    */
+    static std::list <std::list <AISISScheduler::Course> > scheduleList;
 
     /** 
-     * Prints out data regarding the current course to some stream (e.g. to stdout) 
-     */
-    friend std::ostream& operator<<(std::ostream & output, const AISISScheduler::Course & C);
+    * A list of list of courses. Each element of theList is a list of
+    * courses of the same subjectCode. Taken from pushToTheList(). 
+    */
+    static std::list <std::list <AISISScheduler::Course> > theList;
 
-  };
+    /**
+    * @brief Modifies theList based on source.json and requiredSubjects
+    * 
+    * Reads from source.json, and, for each element in requiredSubjects,
+    * it shall append an empty list in theList, and from that empty list, it
+    * will append a Course object if one can be found by reading source.json. 
+    * 
+    * In the case that there are no instances of a subject code in 
+    * requiredSubjects in source.json, the function shall ignore that subject
+    * code, and remove the empty list from theList.
+    */
+    void pushToTheList();
 
-  /** 
-   * A list of subject codes the user is required to take.
-   * Taken from user input (i.e. stdin, extractUserInput()). 
-   */
-  static std::list <std::string> requiredSubjects;
+    /**
+    * @brief Appends objects to requiredSubjects.
+    * 
+    * Reads the user input from std::getline, letting them type subject
+    * codes, and appending these to requiredSubjects after pressing [Enter].
+    * Detects whether duplicate entries are found. If [Enter] is pressed without
+    * typing anything in, the function shall stop. 
+    */
+    void extractUserInput();
 
+    /**
+    * @brief 
+    * @param subject, a Course object
+    * @return boolean
+    * 
+    * Shall determine whether subject is compatible with scheduleTable.
+    * Returns True if it is, False otherwise.
+    */
+    bool isCompatible(AISISScheduler::Course subject);
 
-  /** 
-   * A list of list of courses. Each element of scheduleList
-   * is a viable schedule.
-   */
-  static std::list <std::list <AISISScheduler::Course> > scheduleList;
+    /** 
+    * @brief Starts the program proper.
+    * 
+    * Shall be the "frontend" of the program, if a programmer shall
+    * carry the header file to another program.
+    * 
+    * Shall execute the following functions, in that order:
+    * extractUserInput(), pushToTheList(), backTrack(). 
+    */
+    void start();
 
-  /** 
-   * A list of list of courses. Each element of theList is a list of
-   * courses of the same subjectCode. Taken from pushToTheList(). 
-   */
-  static std::list <std::list <AISISScheduler::Course> > theList;
+    /** 
+    * A boolean two-dimensional C-like array, which contains whether a certain
+    * 30-minute time slot (e.g. at Mon from 1400 to 1430) is taken. The first
+    * dimension representing the days (0 for Mon, 5 for Sat), and the second
+    * representing each 30-minute time slot (i.e. 0700-0730, 0730-0800, ... ,
+    * 2030-2100). 
+    */
+    static bool scheduleTable[6][28];
 
-  /**
-   * @brief Modifies theList based on source.json and requiredSubjects
-   * 
-   * Reads from source.json, and, for each element in requiredSubjects,
-   * it shall append an empty list in theList, and from that empty list, it
-   * will append a Course object if one can be found by reading source.json. 
-   * 
-   * In the case that there are no instances of a subject code in 
-   * requiredSubjects in source.json, the function shall ignore that subject
-   * code, and remove the empty list from theList.
-   */
-  void pushToTheList();
+    /**
+    * @brief Make AISIS Great Again
+    * 
+    * This function shall be responsible for making AISIS great again. Earlier
+    * versions of the program has given the name MAGA (or Make AISIS Great Again)
+    * for this function.
+    */
+    void backTrack();
 
-  /**
-   * @brief Appends objects to requiredSubjects.
-   * 
-   * Reads the user input from std::getline, letting them type subject
-   * codes, and appending these to requiredSubjects after pressing [Enter].
-   * Detects whether duplicate entries are found. If [Enter] is pressed without
-   * typing anything in, the function shall stop. 
-   */
-  void extractUserInput();
+    /**
+    * @brief Modify scheduleTable
+    * @param subject
+    * 
+    * Shall modify scheduleTable so that the appropriate time slots for
+    * subject are "taken" (i.e. flipped to 1).
+    * 
+    * \note It is assumed that isCompatible() returns True! 
+    */
+    void pushToSched(AISISScheduler::Course subject);
 
-  /**
-   * @brief 
-   * @param subject, a Course object
-   * @return boolean
-   * 
-   * Shall determine whether subject is compatible with scheduleTable.
-   * Returns True if it is, False otherwise.
-   */
-  bool isCompatible(AISISScheduler::Course subject);
+    /** 
+    * Shall modify scheduleTable so that the appropriate time slots for
+    * subject are "freed up" (i.e. flipped to 0).
+    * 
+    * \note It is assumed that pushToSched() was invoked! 
+    */
+    void pullFromSched(AISISScheduler::Course subject);
 
-  /** 
-   * @brief Starts the program proper.
-   * 
-   * Shall be the "frontend" of the program, if a programmer shall
-   * carry the header file to another program.
-   * 
-   * Shall execute the following functions, in that order:
-   * extractUserInput(), pushToTheList(), backTrack(). 
-   */
-  void start();
+    /**
+    * @brief Returns a permutation of 
+    * @param courseList, a std::list of std::list objects of Course objects
+    * @return a std::list of std::list objects of Course objects
+    * 
+    * From courseList, which is a list of lists with the same Course.subjectCode,
+    * it shall return a list of permutations from courseList, wherein each 
+    * element of the result is a viable schedule.
+    */
+    std::list <std::list <AISISScheduler::Course> > listOfPermutations(std::list <std::list <AISISScheduler::Course> > courseList);
 
-  /** 
-   * A boolean two-dimensional C-like array, which contains whether a certain
-   * 30-minute time slot (e.g. at Mon from 1400 to 1430) is taken. The first
-   * dimension representing the days (0 for Mon, 5 for Sat), and the second
-   * representing each 30-minute time slot (i.e. 0700-0730, 0730-0800, ... ,
-   * 2030-2100). 
-   */
-  static bool scheduleTable[6][28];
-
-  /**
-   * @brief Make AISIS Great Again
-   * 
-   * This function shall be responsible for making AISIS great again. Earlier
-   * versions of the program has given the name MAGA (or Make AISIS Great Again)
-   * for this function.
-   */
-  void backTrack();
-
-  /**
-   * @brief Modify scheduleTable
-   * @param subject
-   * 
-   * Shall modify scheduleTable so that the appropriate time slots for
-   * subject are "taken" (i.e. flipped to 1).
-   * 
-   * \note It is assumed that isCompatible() returns True! 
-   */
-  void pushToSched(AISISScheduler::Course subject);
-
-  /** 
-   * Shall modify scheduleTable so that the appropriate time slots for
-   * subject are "freed up" (i.e. flipped to 0).
-   * 
-   * \note It is assumed that pushToSched() was invoked! 
-   */
-  void pullFromSched(AISISScheduler::Course subject);
-
-  /**
-   * @brief Returns a permutation of 
-   * @param courseList, a std::list of std::list objects of Course objects
-   * @return a std::list of std::list objects of Course objects
-   * 
-   * From courseList, which is a list of lists with the same Course.subjectCode,
-   * it shall return a list of permutations from courseList, wherein each 
-   * element of the result is a viable schedule.
-   */
-  std::list <std::list <AISISScheduler::Course> > listOfPermutations(std::list <std::list <AISISScheduler::Course> > courseList);
-
-  /**
-   * @brief Helper function for removing first element of a list
-   * @param lst, a std::list of type T
-   * @return A std::list of type T
-   * 
-   * Returns the same lst but without the leading element. 
-   */
-  template <typename T> std::list <T> helper_removeFirstElement (std::list <T> lst)
-  {
+    /**
+    * @brief Helper function for removing first element of a list
+    * @param lst, a std::list of type T
+    * @return A std::list of type T
+    * 
+    * Returns the same lst but without the leading element. 
+    */
+    template <typename T> std::list <T> helper_removeFirstElement (std::list <T> lst)
+    {
     std::list <T> result = lst;
     result.pop_front();
     return result;
-  }
+    }
 }
 
 #endif // AISIS_HPP
+
