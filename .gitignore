@@ -34,6 +34,11 @@
 # Everything in /bin/ and /obj/
 bin/
 obj/
+Debug/
+Release/
+
+# Makefiles
+*.mk
 
 # doxygen (and other log files)
 **/*.log

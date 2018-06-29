@@ -24,6 +24,8 @@ def parse(filename):
     # read (and overwrite, if necessary!) toWrite (filename.json)
     toRead = open(filename, 'r')
     toWrite = open(filename + ".json", 'w')
+    # and write stuff in toWrite ("Classes" and stuff)
+    toWrite.write("""{\n  "Classes": [\n""")
 
     # supplementary variables (for later)
     dictDays = {"M": "Mon",
@@ -55,7 +57,7 @@ def parse(filename):
         toWrite.write(",\n")
 
         # timeSlot
-        # NOTE: Even if it says TBA, it should NOT matter, listTime 
+        # NOTE: Even if it says TBA, it should NOT matter, listTime
         # shall be [""].
         listTime = course[4].split(' ')[1].split('-')
         toWrite.write("""      "timeSlot": """)
@@ -69,6 +71,10 @@ def parse(filename):
 
         # and close that brace
         toWrite.write("    }\n")
+
+    # Once that's loop's done, do the following:
+    toWrite.write("  ]\n}")
+    toWrite.close()
 
 
 if __name__ == "__main__" and len(sys.argv) == 2:
